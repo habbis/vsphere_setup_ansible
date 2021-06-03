@@ -1,0 +1,30 @@
+---
+- name: setup vm on vcenter
+  gather_facts: yes
+  hosts: localhost
+  vars_files: 
+    -  defaults/main.yml
+   #remote_user: root
+  #remote_user: user
+  #become: yes
+  #become_method: sudo
+
+  roles:
+    - esxi_setup
+    #- cluster_setup
+    #- dvswitch_setup
+    #- dvswitch_portgroup
+    #- vmk_migration
+
+#- name: config after creating the vm
+#  vars_files: 
+#    - group_vars/all
+#  gather_facts: no
+#  hosts: "{{ vmip }}"
+#  remote_user: root
+  #remote_user: user
+  #become: yes
+  #become_method: sudo
+
+#  roles:
+#    - nmcli_dns

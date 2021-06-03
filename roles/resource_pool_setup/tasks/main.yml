@@ -1,0 +1,36 @@
+---
+
+- name: Create dvSwitch  "{{ dvs_name01 }}"
+  community.vmware.vmware_dvswitch:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    datacenter: '{{ datacenter }}'
+    validate_certs: no
+    switch: "{{ dvs_name01 }}"
+    version: "{{ dvs_esxi }}"
+    mtu: "{{ dvs_mtu }}"
+    uplink_quantity: "{{ dvs_uplink }}"
+    discovery_protocol: lldp
+    discovery_operation: both
+    state: present
+  delegate_to: localhost
+
+- name: Add resource pool to vCenter
+  community.vmware.vmware_resource_pool:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    datacenter: '{{ datacenter_name }}'
+    cluster: '{{ cluster_name }}'
+    resource_pool: '{{ resource_pool_name }}'
+    mem_shares: normal
+    mem_limit: -1
+    mem_reservation: 0
+    mem_expandable_reservations: true
+    cpu_shares: normal
+    cpu_limit: -1
+    cpu_reservation: 0
+    cpu_expandable_reservations: true
+    state: present
+  delegate_to: localhost

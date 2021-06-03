@@ -1,0 +1,129 @@
+---
+
+- name: Create dvSwitch  "{{ dvs_name01 }}"
+  community.vmware.vmware_dvswitch:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    datacenter: '{{ datacenter }}'
+    validate_certs: no
+    switch: "{{ dvs_name01 }}"
+    version: "{{ dvs_esxi }}"
+    mtu: "{{ dvs_mtu }}"
+    uplink_quantity: "{{ dvs_uplink }}"
+    discovery_protocol: lldp
+    discovery_operation: both
+    state: present
+  delegate_to: localhost
+
+- name: Create dvSwitch "{{ dvs_name02 }}"
+  community.vmware.vmware_dvswitch:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    datacenter: '{{ datacenter }}'
+    validate_certs: no
+    switch: "{{ dvs_name02 }}"
+    version: "{{ dvs_esxi }}"
+    mtu: "{{ dvs_mtu }}"
+    uplink_quantity: "{{ dvs_uplink }}"
+    discovery_protocol: lldp
+    discovery_operation: both
+    state: present
+  delegate_to: localhost
+
+- name: Create dvSwitch 03 "{{ dvs_name03 }}"
+  community.vmware.vmware_dvswitch:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    datacenter: '{{ datacenter }}'
+    validate_certs: no
+    switch: "{{ dvs_name03 }}"
+    version: "{{ dvs_esxi }}"
+    mtu: "{{ dvs_mtu10g }}"
+    uplink_quantity: "{{ dvs_uplink }}"
+    discovery_protocol: lldp
+    discovery_operation: both
+    state: present
+  delegate_to: localhost
+
+- name: Add Host to dVS '{{ esxi_hostname01 }}' "{{ dvs_name01 }}"
+  community.vmware.vmware_dvs_host:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    validate_certs: no
+    esxi_hostname: '{{ esxi_hostname01 }}'
+    switch_name: "{{ dvs_name01 }}"
+    vmnics:
+        - "{{ vmnic01_host01 }}"
+    state: present
+  delegate_to: localhost
+
+
+- name: Add Host to dVS '{{ esxi_hostname02 }}' "{{ dvs_name01 }}"
+  community.vmware.vmware_dvs_host:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    validate_certs: no
+    esxi_hostname: '{{ esxi_hostname02 }}'
+    switch_name: "{{ dvs_name01 }}"
+    vmnics:
+        - "{{ vmnic01_host02 }}"
+    state: present
+  delegate_to: localhost
+
+- name: Add Host to dVS '{{ esxi_hostname03 }}' "{{ dvs_name01 }}"
+  community.vmware.vmware_dvs_host:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    validate_certs: no
+    esxi_hostname: '{{ esxi_hostname03 }}'
+    switch_name: "{{ dvs_name01 }}"
+    vmnics:
+        - "{{ vmnic01_host03 }}"
+    state: present
+  delegate_to: localhost
+
+
+- name: Add Host to dVS '{{ esxi_hostname01 }}' "{{ dvs_name02 }}"
+  community.vmware.vmware_dvs_host:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    validate_certs: no
+    esxi_hostname: '{{ esxi_hostname01 }}'
+    switch_name: "{{ dvs_name02 }}"
+    vmnics:
+        -  "{{ vmnic02_host01 }}"
+    state: present
+  delegate_to: localhost
+
+- name: Add Host to dVS '{{ esxi_hostname02 }}' "{{ dvs_name02 }}"
+  community.vmware.vmware_dvs_host:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    validate_certs: no
+    esxi_hostname: '{{ esxi_hostname02 }}'
+    switch_name: "{{ dvs_name02 }}"
+    vmnics:
+        -  "{{ vmnic02_host02 }}"
+    state: present
+  delegate_to: localhost
+
+- name: Add Host to dVS '{{ esxi_hostname03 }}' "{{ dvs_name02 }}"
+  community.vmware.vmware_dvs_host:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    validate_certs: no
+    esxi_hostname: '{{ esxi_hostname03 }}'
+    switch_name: "{{ dvs_name02 }}"
+    vmnics:
+        - "{{ vmnic02_host03 }}"
+    state: present
+  delegate_to: localhost

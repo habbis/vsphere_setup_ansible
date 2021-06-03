@@ -1,0 +1,375 @@
+---
+
+- name: Create vlan portgroup "{{ dvs_portgroup01 }}"
+  community.vmware.vmware_dvs_portgroup:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    validate_certs: no
+    portgroup_name: "{{ dvs_portgroup01 }}"
+    switch_name: "{{ dvs_name01 }}"
+    vlan_id: "{{ vlan01 }}"
+    num_ports: "{{ dvs_portnumber }}"
+    portgroup_type: earlyBinding
+    state: present
+  delegate_to: localhost
+
+
+- name: Create vlan portgroup "{{ dvs_portgroup02 }}"
+  community.vmware.vmware_dvs_portgroup:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    validate_certs: no
+    portgroup_name: "{{ dvs_portgroup02 }}"
+    switch_name: "{{ dvs_name01 }}"
+    vlan_id: "{{ vlan02 }}"
+    num_ports: "{{ dvs_portnumber }}"
+    portgroup_type: earlyBinding
+    state: present
+  delegate_to: localhost
+
+
+- name: Create vlan portgroup "{{ dvs_portgroup03 }}"
+  community.vmware.vmware_dvs_portgroup:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    validate_certs: no
+    portgroup_name: "{{ dvs_portgroup03 }}"
+    switch_name: "{{ dvs_name01 }}"
+    vlan_id: "{{ vlan03 }}"
+    num_ports: "{{ dvs_portnumber }}"
+    portgroup_type: earlyBinding
+    state: present
+  delegate_to: localhost
+
+
+- name: Create vlan portgroup "{{ dvs_portgroup04 }}"
+  community.vmware.vmware_dvs_portgroup:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    validate_certs: no
+    portgroup_name: "{{ dvs_portgroup04 }}"
+    switch_name: "{{ dvs_name01 }}"
+    vlan_id: "{{ vlan04 }}"
+    num_ports: "{{ dvs_portnumber }}"
+    portgroup_type: earlyBinding
+    state: present
+  delegate_to: localhost
+
+
+- name: Create vlan portgroup "{{ dvs_portgroup05 }}"
+  community.vmware.vmware_dvs_portgroup:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    validate_certs: no
+    portgroup_name: "{{ dvs_portgroup05 }}"
+    switch_name: "{{ dvs_name01 }}"
+    vlan_id: "{{ vlan05 }}"
+    num_ports: "{{ dvs_portnumber }}"
+    portgroup_type: earlyBinding
+    state: present
+  delegate_to: localhost
+
+
+- name: Create vlan portgroup "{{ dvs_portgroup06 }}"
+  community.vmware.vmware_dvs_portgroup:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    validate_certs: no
+    portgroup_name: "{{ dvs_portgroup06 }}"
+    switch_name: "{{ dvs_name01 }}"
+    vlan_id: "{{ vlan06 }}"
+    num_ports: "{{ dvs_portnumber }}"
+    portgroup_type: earlyBinding
+    state: present
+  delegate_to: localhost
+
+
+- name: Create vlan portgroup "{{ dvs_portgroup07 }}"
+  community.vmware.vmware_dvs_portgroup:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    validate_certs: no
+    portgroup_name: "{{ dvs_portgroup07 }}"
+    switch_name: "{{ dvs_name01 }}"
+    vlan_id: "{{ vlan07 }}"
+    num_ports: "{{ dvs_portnumber }}"
+    portgroup_type: earlyBinding
+    state: present
+  delegate_to: localhost
+
+
+- name: Create vlan portgroup "{{ dvs_portgroup08 }}"
+  community.vmware.vmware_dvs_portgroup:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    validate_certs: no
+    portgroup_name: "{{ dvs_portgroup08 }}"
+    switch_name: "{{ dvs_name01 }}"
+    vlan_id: "{{ vlan08 }}"
+    num_ports: "{{ dvs_portnumber }}"
+    portgroup_type: earlyBinding
+    state: present
+  delegate_to: localhost
+
+
+- name: Create vlan portgroup "{{ dvs_portgroup09 }}"
+  community.vmware.vmware_dvs_portgroup:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    validate_certs: no
+    portgroup_name: "{{ dvs_portgroup09 }}"
+    switch_name: "{{ dvs_name01 }}"
+    vlan_id: "{{ vlan09 }}"
+    num_ports: "{{ dvs_portnumber }}"
+    portgroup_type: earlyBinding
+    state: present
+  delegate_to: localhost
+
+
+- name: Create vlan portgroup "{{ dvs_portgroup10 }}"
+  community.vmware.vmware_dvs_portgroup:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    validate_certs: no
+    portgroup_name: "{{ dvs_portgroup10 }}"
+    switch_name: "{{ dvs_name01 }}"
+    vlan_id: "{{ vlan10 }}"
+    num_ports: "{{ dvs_portnumber }}"
+    portgroup_type: earlyBinding
+    state: present
+  delegate_to: localhost
+
+
+- name: Create vlan portgroup "{{ dvs_portgroup11 }}"
+  community.vmware.vmware_dvs_portgroup:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    validate_certs: no
+    portgroup_name: "{{ dvs_portgroup11 }}"
+    switch_name: "{{ dvs_name01 }}"
+    vlan_id: "{{ vlan01 }}"
+    num_ports: "{{ dvs_portnumber }}"
+    portgroup_type: earlyBinding
+    state: present
+  delegate_to: localhost
+
+
+- name: Create vlan portgroup "{{ dvs_portgroup12 }}"
+  community.vmware.vmware_dvs_portgroup:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    validate_certs: no
+    portgroup_name: "{{ dvs_portgroup12 }}"
+    switch_name: "{{ dvs_name01 }}"
+    vlan_id: "{{ vlan12 }}"
+    num_ports: "{{ dvs_portnumber }}"
+    portgroup_type: earlyBinding
+    state: present
+  delegate_to: localhost
+
+
+- name: Create vlan portgroup "{{ dvs_portgroup13 }}"
+  community.vmware.vmware_dvs_portgroup:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    validate_certs: no
+    portgroup_name: "{{ dvs_portgroup13 }}"
+    switch_name: "{{ dvs_name01 }}"
+    vlan_id: "{{ vlan13 }}"
+    num_ports: "{{ dvs_portnumber }}"
+    portgroup_type: earlyBinding
+    state: present
+  delegate_to: localhost
+
+
+- name: Create vlan portgroup "{{ dvs_portgroup14 }}"
+  community.vmware.vmware_dvs_portgroup:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    validate_certs: no
+    portgroup_name: "{{ dvs_portgroup14 }}"
+    switch_name: "{{ dvs_name01 }}"
+    vlan_id: "{{ vlan14 }}"
+    num_ports: "{{ dvs_portnumber }}"
+    portgroup_type: earlyBinding
+    state: present
+  delegate_to: localhost
+
+
+- name: Create vlan portgroup "{{ dvs_portgroup15 }}"
+  community.vmware.vmware_dvs_portgroup:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    validate_certs: no
+    portgroup_name: "{{ dvs_portgroup15 }}"
+    switch_name: "{{ dvs_name01 }}"
+    vlan_id: "{{ vlan15 }}"
+    num_ports: "{{ dvs_portnumber }}"
+    portgroup_type: earlyBinding
+    state: present
+  delegate_to: localhost
+
+
+- name: Create vlan portgroup "{{ dvs_portgroup16 }}"
+  community.vmware.vmware_dvs_portgroup:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    validate_certs: no
+    portgroup_name: "{{ dvs_portgroup16 }}"
+    switch_name: "{{ dvs_name01 }}"
+    vlan_id: "{{ vlan16 }}"
+    num_ports: "{{ dvs_portnumber }}"
+    portgroup_type: earlyBinding
+    state: present
+  delegate_to: localhost
+
+
+- name: Create vlan portgroup "{{ dvs_portgroup17 }}"
+  community.vmware.vmware_dvs_portgroup:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    validate_certs: no
+    portgroup_name: "{{ dvs_portgroup17 }}"
+    switch_name: "{{ dvs_name01 }}"
+    vlan_id: "{{ vlan17 }}"
+    num_ports: "{{ dvs_portnumber }}"
+    portgroup_type: earlyBinding
+    state: present
+  delegate_to: localhost
+
+
+- name: Create vlan portgroup "{{ dvs_portgroup18 }}"
+  community.vmware.vmware_dvs_portgroup:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    validate_certs: no
+    portgroup_name: "{{ dvs_portgroup18 }}"
+    switch_name: "{{ dvs_name01 }}"
+    vlan_id: "{{ vlan18 }}"
+    num_ports: "{{ dvs_portnumber }}"
+    portgroup_type: earlyBinding
+    state: present
+  delegate_to: localhost
+
+
+- name: Create vlan portgroup "{{ dvs_portgroup19 }}"
+  community.vmware.vmware_dvs_portgroup:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    validate_certs: no
+    portgroup_name: "{{ dvs_portgroup19 }}"
+    switch_name: "{{ dvs_name01 }}"
+    vlan_id: "{{ vlan19 }}"
+    num_ports: "{{ dvs_portnumber }}"
+    portgroup_type: earlyBinding
+    state: present
+  delegate_to: localhost
+
+
+- name: Create vlan portgroup "{{ dvs_portgroup20 }}"
+  community.vmware.vmware_dvs_portgroup:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    validate_certs: no
+    portgroup_name: "{{ dvs_portgroup20 }}"
+    switch_name: "{{ dvs_name01 }}"
+    vlan_id: "{{ vlan20 }}"
+    num_ports: "{{ dvs_portnumber }}"
+    portgroup_type: earlyBinding
+    state: present
+  delegate_to: localhost
+
+
+- name: Create vlan portgroup "{{ dvs_portgroup21 }}"
+  community.vmware.vmware_dvs_portgroup:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    validate_certs: no
+    portgroup_name: "{{ dvs_portgroup22 }}"
+    switch_name: "{{ dvs_name01 }}"
+    vlan_id: "{{ vlan22 }}"
+    num_ports: "{{ dvs_portnumber }}"
+    portgroup_type: earlyBinding
+    state: present
+  delegate_to: localhost
+
+
+- name: Create vlan portgroup "{{ dvs_portgroup22 }}"
+  community.vmware.vmware_dvs_portgroup:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    validate_certs: no
+    portgroup_name: "{{ dvs_portgroup22 }}"
+    switch_name: "{{ dvs_name01 }}"
+    vlan_id: "{{ vlan22 }}"
+    num_ports: "{{ dvs_portnumber }}"
+    portgroup_type: earlyBinding
+    state: present
+  delegate_to: localhost
+
+
+#- name: Create vlan portgroup "{{ vlan23 }}"
+#  community.vmware.vmware_dvs_portgroup:
+#    hostname: '{{ vcenter_hostname }}'
+#    username: '{{ vcenter_username }}'
+#    password: '{{ vcenter_password }}'
+#    validate_certs: no
+#    portgroup_name: "{{ dvs_portgroup23 }}"
+#    switch_name: "{{ dvs_name01 }}"
+#    vlan_id: "{{ vlan23 }}"
+#    num_ports: "{{ dvs_portnumber }}"
+#    portgroup_type: earlyBinding
+#    state: present
+#  delegate_to: localhost
+
+
+#- name: Create vlan portgroup "{{ vlan24 }}"
+#  community.vmware.vmware_dvs_portgroup:
+#    hostname: '{{ vcenter_hostname }}'
+#    username: '{{ vcenter_username }}'
+#    password: '{{ vcenter_password }}'
+#    validate_certs: no
+#    portgroup_name: "{{ dvs_portgroup24 }}"
+#    switch_name: "{{ dvs_name01 }}"
+#    vlan_id: "{{ vlan24 }}"
+#    num_ports: "{{ dvs_portnumber }}"
+#    portgroup_type: earlyBinding
+#    state: present
+#  delegate_to: localhost
+
+
+#- name: Create vlan portgroup "{{ vlan25 }}"
+#  community.vmware.vmware_dvs_portgroup:
+#    hostname: '{{ vcenter_hostname }}'
+#    username: '{{ vcenter_username }}'
+#    password: '{{ vcenter_password }}'
+#    validate_certs: no
+#    portgroup_name: "{{ dvs_portgroup25 }}"
+#    switch_name: "{{ dvs_name01 }}"
+#    vlan_id: "{{ vlan25 }}"
+#    num_ports: "{{ dvs_portnumber }}"
+#    portgroup_type: earlyBinding
+#    state: present
+#  delegate_to: localhost

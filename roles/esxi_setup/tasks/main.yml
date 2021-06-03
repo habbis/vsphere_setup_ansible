@@ -1,0 +1,383 @@
+---
+
+- name: Add a VMware vSwitch to "{{ esxi_hostname01 }}"
+  community.vmware.vmware_vswitch:
+    hostname: "{{ esxi_hostname01 }}"
+    username: '{{ esxi_username }}'
+    password: '{{ esxi_password }}'
+    esxi_hostname: "{{ esxi_hostname01 }}"
+    validate_certs: no
+    switch_name: "{{ storage_vswitch }}"
+    nic_name: vmnic5  
+    mtu: 9000
+  delegate_to: localhost 
+
+- name: Add a VMware vSwitch "{{ esxi_hostname02 }}"
+  community.vmware.vmware_vswitch:
+    hostname: "{{ esxi_hostname02 }}"
+    username: '{{ esxi_username }}'
+    password: '{{ esxi_password }}'
+    esxi_hostname: "{{ esxi_hostname02 }}"
+    validate_certs: no
+    switch_name: "{{ storage_vswitch }}"
+    nic_name: vmnic5
+    mtu: 9000
+  delegate_to: localhost 
+
+- name: Add a VMware vSwitch to "{{ esxi_hostname03 }}"
+  community.vmware.vmware_vswitch:
+    hostname: "{{ esxi_hostname03 }}"
+    username: '{{ esxi_username }}'
+    password: '{{ esxi_password }}'
+    esxi_hostname: "{{ esxi_hostname03 }}"
+    validate_certs: no
+    switch_name: "{{ storage_vswitch }}"
+    nic_name: vmnic1
+    mtu: 9000
+  delegate_to: localhost 
+
+
+- name: Add "{{ vss_storage_portgroup }}" VM Portgroup to "{{ esxi_hostname01 }}"
+  community.vmware.vmware_portgroup:
+    hostname: "{{ esxi_hostname01 }}"
+    username: "{{ esxi_username }}"
+    password: "{{ esxi_password }}"
+    hosts: "{{ esxi_hostname01 }}"
+    validate_certs: no
+    switch: "{{ storage_vswitch }}"
+    portgroup: "{{ vss_storage_portgroup }}"
+    vlan_id: 0
+  delegate_to: localhost
+
+- name: Add "{{ vss_storage_portgroup }}" VM Portgroup to "{{ esxi_hostname02 }}"
+  community.vmware.vmware_portgroup:
+    hostname: "{{ esxi_hostname02 }}"
+    username: "{{ esxi_username }}"
+    password: "{{ esxi_password }}"
+    hosts: "{{ esxi_hostname02 }}"
+    validate_certs: no
+    switch: "{{ storage_vswitch }}"
+    portgroup: "{{ vss_storage_portgroup }}"
+    vlan_id: 0
+  delegate_to: localhost
+
+
+- name: Add "{{ vss_storage_portgroup }}" VM Portgroup to "{{ esxi_hostname03 }}"
+  community.vmware.vmware_portgroup:
+    hostname: "{{ esxi_hostname03 }}"
+    username: "{{ esxi_username }}"
+    password: "{{ esxi_password }}"
+    hosts: "{{ esxi_hostname03 }}"
+    validate_certs: no
+    switch: "{{ storage_vswitch }}"
+    portgroup: "{{ vss_storage_portgroup }}"
+    vlan_id: 0
+  delegate_to: localhost
+
+- name: Add Management Network VM Portgroup to "{{ esxi_hostname01 }}"
+  community.vmware.vmware_portgroup:
+    hostname: "{{ esxi_hostname01 }}"
+    username: "{{ esxi_username }}"
+    password: "{{ esxi_password }}"
+    hosts: "{{ esxi_hostname01 }}"
+    validate_certs: no
+    switch: "{{ defautl_vswitch }}"
+    portgroup: "{{ vss_vca_portgroup }}"
+    vlan_id: 24
+  delegate_to: localhost
+
+- name: Add Management Network VM Portgroup to "{{ esxi_hostname02 }}"
+  community.vmware.vmware_portgroup:
+    hostname: "{{ esxi_hostname02 }}"
+    username: "{{ esxi_username }}"
+    password: "{{ esxi_password }}"
+    hosts: "{{ esxi_hostname02 }}"
+    validate_certs: no
+    switch: "{{ defautl_vswitch }}"
+    portgroup: "{{ vss_vca_portgroup }}"
+    vlan_id: 24
+  delegate_to: localhost
+
+
+- name: Add Management Network VM Portgroup to "{{ esxi_hostname03 }}"
+  community.vmware.vmware_portgroup:
+    hostname: "{{ esxi_hostname03 }}"
+    username: "{{ esxi_username }}"
+    password: "{{ esxi_password }}"
+    hosts: "{{ esxi_hostname03 }}"
+    validate_certs: no
+    switch: "{{ defautl_vswitch }}"
+    portgroup: "{{ vss_vca_portgroup }}"
+    vlan_id: 24
+  delegate_to: localhost
+
+-  name: Add Management vmkernel port to "{{ esxi_hostname01 }}"
+   community.vmware.vmware_vmkernel:
+      hostname: "{{ esxi_hostname01 }}"
+      username: "{{ esxi_username }}"
+      password: "{{ esxi_password }}"
+      esxi_hostname: "{{ esxi_hostname01 }}"
+      validate_certs: no
+      vswitch_name: "{{ storage_vswitch }}"
+      portgroup_name: "{{ vss_storage_portgroup }}"
+      mtu: 9000
+      device: vmk1
+      network:
+        type: 'static'
+        ip_address: "{{ vmk_ip_storage_host01 }}"
+        subnet_mask: "{{ vmk_subnet_storage }}"
+      state: present
+      enable_mgmt: True
+      enable_vmotion: True
+   delegate_to: localhost
+
+-  name: Add Management vmkernel port to "{{ esxi_hostname02 }}"
+   community.vmware.vmware_vmkernel:
+      hostname: "{{ esxi_hostname02 }}"
+      username: '{{ esxi_username }}'
+      password: '{{ esxi_password }}'
+      esxi_hostname: "{{ esxi_hostname02 }}"
+      validate_certs: no
+      vswitch_name: "{{ storage_vswitch }}"
+      portgroup_name: "{{ vss_storage_portgroup }}"
+      mtu: 9000
+      device: vmk1
+      network:
+        #type: 'dhcp'
+        type: 'static'
+        ip_address: "{{ vmk_ip_storage_host02 }}"
+        subnet_mask: "{{ vmk_subnet_storage }}"
+      state: present
+      enable_mgmt: True
+      enable_vmotion: True
+   delegate_to: localhost
+
+-  name: Add Management vmkernel port to "{{ esxi_hostname03 }}"
+   community.vmware.vmware_vmkernel:
+      hostname: "{{ esxi_hostname03 }}"
+      username: '{{ esxi_username }}'
+      password: '{{ esxi_password }}'
+      esxi_hostname: "{{ esxi_hostname03 }}"
+      validate_certs: no
+      vswitch_name: "{{ storage_vswitch }}"
+      portgroup_name: "{{ vss_storage_portgroup }}"
+      mtu: 9000
+      device: vmk1
+      network:
+        #type: 'dhcp'
+        type: 'static'
+        ip_address: "{{ vmk_ip_storage_host03 }}"
+        subnet_mask: "{{ vmk_subnet_storage }}"
+      state: present
+      enable_mgmt: True
+      enable_vmotion: True
+   delegate_to: localhost
+
+
+
+- name: mount nfs datastore "{{ datastore_name01 }}" "{{ esxi_hostname01 }}"
+  vmware_host_datastore:
+    hostname: "{{ esxi_hostname01 }}"
+    username: "{{ esxi_username }}"
+    password: "{{ esxi_password }}"
+    #hosts: "{{ esxi }}"
+    esxi_hostname: "{{ esxi_hostname01 }}"
+    validate_certs: no
+    datastore_name: "{{ datastore_name01 }}"
+    #datastore_type: nfs41
+    datastore_type: nfs
+    nfs_server: "{{ nfs_server }}"
+    nfs_path: "{{ nfs_path01 }}"
+    nfs_ro: no
+    state: present
+  delegate_to: localhost
+
+- name: mount nfs datastore "{{ datastore_name02 }}" "{{ esxi_hostname01 }}"
+  vmware_host_datastore:
+    hostname: "{{ esxi_hostname01 }}"
+    username: "{{ esxi_username }}"
+    password: "{{ esxi_password }}"
+    #hosts: "{{ esxi }}"
+    esxi_hostname: "{{ esxi_hostname01 }}"
+    validate_certs: no
+    datastore_name: "{{ datastore_name02 }}"
+    #datastore_type: nfs41
+    datastore_type: nfs
+    nfs_server: "{{ nfs_server }}"
+    nfs_path: "{{ nfs_path02 }}"
+    nfs_ro: no
+    state: present
+  delegate_to: localhost
+
+- name: mount nfs datastore "{{ datastore_name03 }}" "{{ esxi_hostname01 }}"
+  vmware_host_datastore:
+    hostname: "{{ esxi_hostname01 }}"
+    username: "{{ esxi_username }}"
+    password: "{{ esxi_password }}"
+    #hosts: "{{ esxi }}"
+    esxi_hostname: "{{ esxi_hostname01 }}"
+    validate_certs: no
+    datastore_name: "{{ datastore_name03 }}"
+  #datastore_type: nfs41
+    datastore_type: nfs
+    nfs_server: "{{ nfs_server }}"
+    nfs_path: "{{ nfs_path03 }}"
+    nfs_ro: no
+    state: present
+  delegate_to: localhost
+
+
+- name: mount nfs datastore "{{ datastore_name04 }}" "{{ esxi_hostname01 }}"
+  vmware_host_datastore:
+    hostname: "{{ esxi_hostname01 }}"
+    username: "{{ esxi_username }}"
+    password: "{{ esxi_password }}"
+    #hosts: "{{ esxi }}"
+    esxi_hostname: "{{ esxi_hostname01 }}"
+    validate_certs: no
+    datastore_name: "{{ datastore_name04 }}"
+    #datastore_type: nfs41
+    datastore_type: nfs
+    nfs_server: "{{ nfs_server }}"
+    nfs_path: "{{ nfs_path04 }}"
+    nfs_ro: no
+    state: present
+  delegate_to: localhost
+
+- name: mount nfs datastore "{{ datastore_name01 }}" "{{ esxi_hostname02 }}"
+  vmware_host_datastore:
+    hostname: "{{ esxi_hostname02 }}"
+    username: "{{ esxi_username }}"
+    password: "{{ esxi_password }}"
+    #hosts: "{{ esxi }}"
+    esxi_hostname: "{{ esxi_hostname02 }}"
+    validate_certs: no
+    datastore_name: "{{ datastore_name01 }}"
+    #datastore_type: nfs41
+    datastore_type: nfs
+    nfs_server: "{{ nfs_server }}"
+    nfs_path: "{{ nfs_path01 }}"
+    nfs_ro: no
+    state: present
+  delegate_to: localhost
+
+- name: mount nfs datastore "{{ datastore_name02 }}" "{{ esxi_hostname02 }}"
+  vmware_host_datastore:
+    hostname: "{{ esxi_hostname02 }}"
+    username: "{{ esxi_username }}"
+    password: "{{ esxi_password }}"
+    #hosts: "{{ esxi }}"
+    esxi_hostname: "{{ esxi_hostname02 }}"
+    validate_certs: no
+    datastore_name: "{{ datastore_name02 }}"
+    #datastore_type: nfs41
+    datastore_type: nfs
+    nfs_server: "{{ nfs_server }}"
+    nfs_path: "{{ nfs_path02 }}"
+    nfs_ro: no
+    state: present
+  delegate_to: localhost
+
+- name: mount nfs datastore "{{ datastore_name03 }}" "{{ esxi_hostname02 }}"
+  vmware_host_datastore:
+   hostname: "{{ esxi_hostname02 }}"
+   username: "{{ esxi_username }}"
+   password: "{{ esxi_password }}"
+   #hosts: "{{ esxi }}"
+   esxi_hostname: "{{ esxi_hostname02 }}"
+   validate_certs: no
+   datastore_name: "{{ datastore_name03 }}"
+   #datastore_type: nfs41
+   datastore_type: nfs
+   nfs_server: "{{ nfs_server }}"
+   nfs_path: "{{ nfs_path03 }}"
+   nfs_ro: no
+   state: present
+  delegate_to: localhost
+
+- name: mount nfs datastore "{{ datastore_name04 }}" "{{ esxi_hostname02 }}"
+  vmware_host_datastore:
+    hostname: "{{ esxi_hostname02 }}"
+    username: "{{ esxi_username }}"
+    password: "{{ esxi_password }}"
+    #hosts: "{{ esxi }}"
+    esxi_hostname: "{{ esxi_hostname02 }}"
+    validate_certs: no
+    datastore_name:  "{{ datastore_name04 }}" 
+    #datastore_type: nfs41
+    datastore_type: nfs
+    nfs_server: "{{ nfs_server }}"
+    nfs_path: "{{ nfs_path04 }}"
+    nfs_ro: no
+    state: present
+  delegate_to: localhost
+
+
+- name: mount nfs datastore "{{ datastore_name01 }}" "{{ esxi_hostname03 }}"
+  vmware_host_datastore:
+    hostname: "{{ esxi_hostname03 }}"
+    username: "{{ esxi_username }}"
+    password: "{{ esxi_password }}"
+    #hosts: "{{ esxi }}"
+    esxi_hostname: "{{ esxi_hostname03 }}"
+    validate_certs: no
+    datastore_name: "{{ datastore_name01 }}"
+    #datastore_type: nfs41
+    datastore_type: nfs
+    nfs_server: "{{ nfs_server }}"
+    nfs_path: "{{ nfs_path01 }}"
+    nfs_ro: no
+    state: present
+  delegate_to: localhost
+
+- name: mount nfs datastore "{{ datastore_name02 }}" "{{ esxi_hostname03 }}"
+  vmware_host_datastore:
+    hostname: "{{ esxi_hostname03 }}"
+    username: "{{ esxi_username }}"
+    password: "{{ esxi_password }}"
+    #hosts: "{{ esxi }}"
+    esxi_hostname: "{{ esxi_hostname03 }}"
+    validate_certs: no
+    datastore_name: "{{ datastore_name02 }}"
+    #datastore_type: nfs41
+    datastore_type: nfs
+    nfs_server: "{{ nfs_server }}"
+    nfs_path: "{{ nfs_path02 }}"
+    nfs_ro: no
+    state: present
+  delegate_to: localhost
+
+- name: mount nfs datastore "{{ datastore_name03 }}" "{{ esxi_hostname03 }}"
+  vmware_host_datastore:
+    hostname: "{{ esxi_hostname03 }}"
+    username: "{{ esxi_username }}"
+    password: "{{ esxi_password }}"
+    #hosts: "{{ esxi }}"
+    esxi_hostname: "{{ esxi_hostname03 }}"
+    validate_certs: no
+    datastore_name: "{{ datastore_name03 }}"
+    #datastore_type: nfs41
+    datastore_type: nfs
+    nfs_server: "{{ nfs_server }}"
+    nfs_path: "{{ nfs_path03 }}"
+    nfs_ro: no
+    state: present
+  delegate_to: localhost
+
+
+- name: mount nfs datastore "{{ datastore_name04 }}" "{{ esxi_hostname03 }}"
+  vmware_host_datastore:
+    hostname: "{{ esxi_hostname03 }}"
+    username: "{{ esxi_username }}"
+    password: "{{ esxi_password }}"
+    #hosts: "{{ esxi }}"
+    esxi_hostname: "{{ esxi_hostname03 }}"
+    validate_certs: no
+    datastore_name:  "{{ datastore_name04 }}" 
+    #datastore_type: nfs41
+    datastore_type: nfs
+    nfs_server: "{{ nfs_server }}"
+    nfs_path:   "{{ nfs_path04  }}"
+    nfs_ro: no
+    state: present
+  delegate_to: localhost

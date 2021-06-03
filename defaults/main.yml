@@ -1,0 +1,144 @@
+# vcenter
+#
+vcenter_hostname: 
+vcenter_username: 
+vcenter_password: 
+datacenter_name: 
+datacenter: 
+cluster_name: 
+
+
+
+
+# esxi 
+esxi_hostname01: 
+esxi_hostname02: 
+esxi_hostname03: 
+
+esxi_username: 
+esxi_password: 
+
+vmnic01_host01: vmnic1
+vmnic01_host02: vmnic1
+vmnic01_host03: vmnic4
+
+vmnic02_host01: vmnic2
+vmnic02_host02: vmnic2
+vmnic02_host03: vmnic3
+
+# vswitch setup 
+defautl_vswitch: vSwitch0
+vss_vca_portgroup: prod
+vss_vlan: 24 
+
+storage_vswitch: vFastswitch
+vss_storage_portgroup: fastnet
+mtu: 9000
+
+vmk_ip_storage_host01: 
+vmk_ip_storage_host02: 
+vmk_ip_storage_host03: 
+vmk_subnet_storage: 
+
+
+
+# storage setup 
+datastore_type: nfs
+nfs_server: 
+
+datastore_name01: 
+nfs_path01: 
+
+datastore_name02: 
+nfs_path02: 
+
+datastore_name03: 
+nfs_path03: 
+
+datastore_name04: 
+nfs_path04: 
+
+
+# dvswitch config 
+dvs_name01: dvsManualprov
+dvs_name02: dvsAutoprov
+dvs_name03: dvsFastswitch
+dvs_esxi: 7.0.0
+dvs_mtu: 1500
+dvs_uplink: 1
+# mtu 10 nic
+dvs_mtu10g: 9000
+
+# dvsportgroup config
+
+dvs_portnumber: 120
+
+dvs_portgroup01: 
+dvs_portgroup02: 
+dvs_portgroup03: 
+dvs_portgroup04: 
+dvs_portgroup05: 
+dvs_portgroup06: 
+dvs_portgroup07: 
+dvs_portgroup08: 
+dvs_portgroup09: 
+dvs_portgroup10: 
+dvs_portgroup11: 
+dvs_portgroup12: 
+dvs_portgroup13: 
+dvs_portgroup14: 
+dvs_portgroup15: 
+dvs_portgroup16: 
+dvs_portgroup17: 
+dvs_portgroup18: 
+dvs_portgroup19: 
+dvs_portgroup20: 
+dvs_portgroup21:
+dvs_portgroup22: 
+#dvs_portgroup26:
+#dvs_portgroup27:
+#dvs_portgroup28:
+#dvs_portgroup29:
+#dvs_portgroup30:
+#dvs_portgroup31:
+
+
+vlan01: 
+vlan02: 
+vlan03:
+vlan04: 
+vlan05: 
+vlan06: 
+vlan07: 
+vlan08: 
+vlan09: 
+vlan10: 
+vlan11:
+vlan12: 
+vlan13: 
+vlan14: 
+vlan15: 
+vlan16:
+vlan17:
+vlan18:
+vlan19:
+vlan20:
+vlan21:
+vlan22: 
+#vlan23:
+#vlan24:
+#vlan25:
+##vlan26:
+#vlan27:
+#vlan28:
+#vlan29:
+#vlan30:
+#vlan31:
+
+
+#vmkernel migration config
+current_vmk01: vmk0
+current_vswitch: vSwitch0
+current_portgroup: prod
+
+

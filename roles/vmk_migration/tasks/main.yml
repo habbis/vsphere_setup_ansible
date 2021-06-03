@@ -1,0 +1,16 @@
+---
+
+- name: Migrate Management vmk from vSwitch0 "{{ dvs_name01 }}"
+  community.vmware.vmware_migrate_vmk:
+    hostname: "{{ vcenter_hostname }}"
+    username: "{{ vcenter_username }}"
+    password: "{{ vcenter_password }}"
+    validate_certs: no
+    esxi_hostname: "{{ esxi_hostname01 }}"
+    device: "{{ current_vmk01 }}"
+    current_switch_name: "{{ current_vswitch }}"
+    current_portgroup_name: "{{ current_portgroup }}"
+    migrate_switch_name: "{{ dvs_name01 }}"
+    migrate_portgroup_name: "{{ dvs_portgroup06 }}"
+  delegate_to: localhost
+

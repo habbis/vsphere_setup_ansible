@@ -1,0 +1,80 @@
+---
+
+- name: Create Datacenter
+  community.vmware.vmware_datacenter:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    validate_certs: no
+    datacenter_name: '{{ datacenter_name }}'
+    state: present
+  delegate_to: localhost
+
+- name: Create a VM folder on given datacenter
+  community.vmware.vcenter_folder:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    validate_certs: no
+    datacenter_name: '{{ datacenter_name }}'
+    folder_name: templates
+    folder_type: vm
+    state: present
+    #register: vm_folder_creation_result
+  delegate_to: localhost
+
+- name: Create Cluster
+  community.vmware.vmware_cluster:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    validate_certs: no
+    datacenter_name: '{{ datacenter_name }}'
+    cluster_name: '{{ cluster_name }}'
+    enable_ha: true
+    enable_drs: true
+    enable_vsan: false
+  delegate_to: localhost
+
+- name: Add ESXi ironfist to vCenter
+  community.vmware.vmware_host:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    validate_certs: no
+    datacenter: '{{ datacenter_name }}'
+    cluster: '{{ cluster_name }}'
+    esxi_hostname: ironfist.mgmt.habbfarm.net
+    esxi_username: '{{ esxi_username }}'
+    esxi_password: '{{ esxi_password }}'
+    state: present
+  delegate_to: localhost
+
+
+- name: Add ESXi executor to vCenter
+  community.vmware.vmware_host:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    validate_certs: no
+    datacenter: '{{ datacenter_name }}'
+    cluster: '{{ cluster_name }}'
+    esxi_hostname: executor.mgmt.habbfarm.net
+    esxi_username: '{{ esxi_username }}'
+    esxi_password: '{{ esxi_password }}'
+    state: present
+  delegate_to: localhost
+
+- name: Add ESXi reaper to vCenter
+  community.vmware.vmware_host:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    validate_certs: no
+    datacenter: '{{ datacenter_name }}'
+    cluster: '{{ cluster_name }}'
+    esxi_hostname: reaper.mgmt.habbfarm.net
+    esxi_username: '{{ esxi_username }}'
+    esxi_password: '{{ esxi_password }}'
+    state: present
+  delegate_to: localhost
